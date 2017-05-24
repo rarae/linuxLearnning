@@ -1,0 +1,7 @@
+  上传文件
+在你要上传的文件夹内： git init
+将所有文件添加到仓库： git add .
+执行指令：git commit -m "上传文件"
+关联仓库：git remote add origin
+上传文件：git push -u origin master
+OK
