@@ -1,0 +1,13 @@
+Host Discovery(ping扫描)
+　-sP (Ping扫描)	
+  -P0 无ping扫描，跳过发现阶段
+  -PS[portlist]  SYN  使通过防火墙的机会增大
+  -PA[portlist]  ACK　使通过防火墙的机会增大
+  -PU[portlist]  UDP  穿越只过滤TCP的防火墙和过滤器
+  -PE echo　　　		
+  -PP 时间戳查询
+  -PM 地址掩码查询
+  -PR ARP Ping  （此参数为默认参数）　　　　
+  --send-ip　不要arp扫描
+  -n 不用域名解析
+  -R 为目标解析域名

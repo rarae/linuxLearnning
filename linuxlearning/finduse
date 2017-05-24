@@ -1,0 +1,42 @@
+find 《何处》《何物》《做什么》
+
+例子：find / -name "*.txt"     找出在/目录下的所有的txt文件
+
+例子: find /home/countless_grief -size +10M    找出在/home/countless_grief中超过10Ｍ的文件
+
+例子: find / -name "*.txt" -atime -7      -atime代表AccessTime,例子表示查找七天之内访问过的文件 
+
+find /var/log -name "mysql" -type d   查找目录
+
+find /var/log -name "mysql" -type f   查找文件
+
+find命令的高级用法：操作查找结果
+事实上，
+find -name "*.jpg"
+等价于
+find -name "*.jpg" -print
+
+find ~/Photos -name "*.jpg" -printf "%p - %u\n"
+我们在-printf参数后面写了"%p - %u\n"，这个格式字符串的意思如下：
+
+    %p：文件名。
+
+    -：就是一个短横。
+
+    %u：文件的所有者，这里是小编的用户名，所以是oscar。
+
+    \n：用于换行。
+
+find -name "*.jpg" -delete   删除文件
+
+调用命令：　　-exec
+find -name "*.jpg" -exec chmod 600 {} \;
+
+就是说对于每个找到的.jpg结尾的文件，都进行-exec参数指定的操作：
+
+    这个操作不必用双引号括起来。
+
+    {} 会用查找到的每个文件来替换。
+
+    \; 是必须的结尾。
+

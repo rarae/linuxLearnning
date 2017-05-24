@@ -1,0 +1,50 @@
+ 1. >: 重定向到新的文件     不过使用时要小心，因为>符号会把输出重定向到文件中，如果此文件不存在，则新建一个文件；
+                          如果此文件已经存在，那就会把文件内容覆盖掉（清除原有内容，然后写入文件），而且是不会征求用户确认的！
+
+  Linux中有一个俗称《黑洞》的文件，就是
+
+  /dev/null
+
+  null是英语《无，空》的意思。
+
+  /dev/null 文件是特殊文件，不是一个目录。此文件具有唯一的属性：它总是空的。它能使发送到/dev/null 的任何数据作废，就好像这些数据掉进了无底的黑洞一般。
+
+  因此，假如我们不需要在终端显示刚才那个cut命令的结果，也不想存储到文件里，那么可以这么做：
+
+  cut -d , -f 1 notes.csv > /dev/null
+
+  然后，整个世界都清净了...
+
+ 2. >>: 重定向到文件末尾 
+
+
+ 3.
+文件描述符 	名字 	        解释
+0 	        stdin 	        标准输入
+1 	        stdout 	        标准输出
+2 	        stderr 	        标准错误输出
+
+cat not_exist_file.csv > results.txt 2> errors.log
+
+这个命令里有两个重定向：
+
+    > results.txt：将标准输出重定向到results.txt文件中。
+
+    2> errors.log：将标准错误输出重定向到errors.log文件中。
+
+也就是说：
+
+    假如not_exist_file.csv这个文件确实存在，将其内容写入results.txt文件中
+    假如not_exist_file.csv这个文件不存在，将错误信息写入errors.log文件中。
+	
+
+　　合并输出到新文件: cat not_exist_file.csv > results.txt 2>&1
+　　合并输出到文件的末尾：　cat not_exist_file.csv >> results.txt 2>&1
+
+ 4. <, <<  
+    <：将命令的输入重定向为文件内容。   cat < notes.csv
+
+    <<：将命令的输入重定向为键盘输入，以逐行输入的模式（回车键换行）。所有输入的行都将在输入结束字符串（例如上面例子中的END）之后发送给命令。
+	sort -n << END     wc -m << END
+　　结合使用的话：　sort -n << END > numbers_sorted.txt 2>&1
+
