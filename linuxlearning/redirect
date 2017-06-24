@@ -19,10 +19,10 @@
 
 
  3.
-文件描述符 	名字 	        解释
-0 	        stdin 	        标准输入
-1 	        stdout 	        标准输出
-2 	        stderr 	        标准错误输出
+文件描述符 	名字 	        解释                  echo 'hello' > 1.txt实际上为：echo 'hello' 1> 1.txt (即没有写文件描述符时默认的是标准输出1)
+0 	        stdin 	        标准输入            >& test.txt 等于 > test.txt 2>&1 。(将标准输出和标准错误输出重定向到test.txt)
+1 	        stdout 	        标准输出            注意：> test.txt 2>&1 不等于 2>&1 > test.txt(前者先把标准输出重定向到test.txt，再把标准错误定向到标准输出)
+2 	        stderr 	        标准错误输出                                                   (后者先把标准错误定向到标准输出，再把标准输出定向到文件，这时候错误只能输出到屏幕上，只有标准输出才能到文件)
 
 cat not_exist_file.csv > results.txt 2> errors.log
 
